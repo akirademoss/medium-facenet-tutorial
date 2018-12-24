@@ -204,8 +204,10 @@ class AlignDlib:
         npLandmarkIndices = np.array(landmarkIndices)
 
         # pylint: disable=maybe-no-member
+        # calculates affine transformation
         H = cv2.getAffineTransform(npLandmarks[npLandmarkIndices],
                                    imgDim * MINMAX_TEMPLATE[npLandmarkIndices] * scale + imgDim * (1 - scale) / 2)
+        # applies the affine transformation
         thumbnail = cv2.warpAffine(rgbImg, H, (imgDim, imgDim))
 
         return thumbnail
