@@ -96,7 +96,14 @@ class AlignDlib:
         assert facePredictor is not None
 
         # pylint: disable=no-member
+        # Returns the default face detector
         self.detector = dlib.get_frontal_face_detector()
+        # This object is a tool that takes in an image region containing some 
+        # object and outputs a set of point locations that define the pose of
+        # the object. The classic example of this is human face pose 
+        # prediction, where you take an image of a human face as input and are 
+        # expected to identify the locations of important facial landmarks such 
+        # as the corners of the mouth and eyes, tip of the nose, and so forth.
         self.predictor = dlib.shape_predictor(facePredictor)
 
     def getAllFaceBoundingBoxes(self, rgbImg):
